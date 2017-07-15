@@ -10,6 +10,9 @@ def poster_downloader():
 	search = input("\n Write a movie with the YEAR at the end (ex: The Dark Knight 2008): ")
 	search = search.title().strip().split(' ')
 	search_terms, search_year = search[:-1],search[-1]
+	if not search_year.isdigit():
+		print("You MUST specify the year at the end")
+		return
 	crawler = Crawler()
 	possible_links = crawler.crawl(search_year, search_terms)
 	if len(possible_links) == 0:
