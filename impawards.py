@@ -38,13 +38,14 @@ class Crawler:
 			if link.get('href'): images.append(link.get('href'))
 		return images
 		
-	def get_xlg(self, search_year, img_link):
+	def get_xxlg(self, search_year, img_link):
 		url_base=self.site+"{}/".format(search_year)
 		soup = request_soup(url_base+img_link)
+		best_link = img_link
 		for link in soup.findAll('a',href=True):
-			if "xxlg" in link.get('href'): return link.get('href')
-			elif "xlg" in link.get('href'): return link.get('href')
-		return img_link
+			if "xxlg" in link.get('href'): best_link= link.get('href')
+			elif "xlg" in link.get('href') and "xxlg" not in best_link: best_link=link.get('href')
+		return best_link
 		
 	def download_img(self, search_year, img_link):
 		url_base=self.site+"{}/posters/".format(search_year)

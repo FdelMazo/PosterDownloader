@@ -30,12 +30,15 @@ def poster_downloader():
 	images = crawler.get_images(search_year,movie_link)
 	images_xlg = []
 	for img in images:
-		images_xlg.append(crawler.get_xlg(search_year,img))
+		images_xlg.append(crawler.get_xxlg(search_year,img))
 	if not images_xlg: return
 	os.makedirs(title,exist_ok=True)
 	for img_xlg in images_xlg:
 		filename = crawler.download_img(search_year,img_xlg)
-		if filename: shutil.move(filename, title)
+		if filename: 
+			try: shutil.move(filename, title)
+			except: pass
+	del possible_links[:]
 	
 def main():
 	flag = "run"
@@ -44,4 +47,5 @@ def main():
 		except KeyboardInterrupt: pass
 		flag = input("\nPress any key to exit or 'run' to run again: ").lower()	
 			
+
 main()
