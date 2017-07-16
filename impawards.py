@@ -42,7 +42,8 @@ class Crawler:
 		url_base=self.site+"{}/".format(search_year)
 		soup = request_soup(url_base+img_link)
 		for link in soup.findAll('a',href=True):
-			if "xlg" in link.get('href'): return link.get('href')
+			if "xxlg" in link.get('href'): return link.get('href')
+			elif "xlg" in link.get('href'): return link.get('href')
 		return img_link
 		
 	def download_img(self, search_year, img_link):
