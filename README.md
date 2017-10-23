@@ -4,7 +4,7 @@ Webscraper for downloading official movie posters in the highest resolution avai
 ## Installation & Quick Usage
 
 * End User:
-    * Download from ['releases'](https://github.com/FdelMazo/PosterDownloader/releases) the latest one and extract everything
+    * Download the executable from ['releases'](https://github.com/FdelMazo/PosterDownloader/releases) the latest one and extract everything
     * After that, just start the PosterDownloader.exe (Windows) or write ./PosterDownloader in the terminal (Linux)
 
 ## Complete Features

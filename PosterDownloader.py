@@ -29,9 +29,9 @@ def poster_downloader(search_terms=None, search_year=None, flags={}):
 		title, movie_link = possible_links[-1]
 	else:
 		for i, tuple in enumerate(possible_links, 1):
-			print("{:<3} -  {}".format(i, tuple[0]))
+			print("\t {:<3} -  {}".format(i, tuple[0]))
 		logging.debug("Press return to stop ")
-		selection = input("\n Which Movie? [write number] ").lower()
+		selection = input("\n Which Movie? ([Number]) ").lower()
 		while not selection.isdigit() or not 0 < int(selection) <= len(possible_links) and selection != "":
 			if not selection:
 				logging.warning("User canceled action")
@@ -41,7 +41,7 @@ def poster_downloader(search_terms=None, search_year=None, flags={}):
 		title,movie_link = possible_links[int(selection) - 1]
 	print("Found: {} at {}".format(title, movie_link))
 	if not flags.get('no_confirm'):
-		response = True if input("Do you want to download the posters for this movie?([Y]es/[N]o): ").lower() in 'yes' else False
+		response = True if input("Do you want to download the posters for this movie? ([Y]es/[N]o): ").lower() in 'yes' else False
 		if not response:
 			logging.warning("User canceled action")
 			del possible_links[:]

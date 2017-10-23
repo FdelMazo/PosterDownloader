@@ -3,6 +3,12 @@
 #federicodelmazo@hotmail.com
 
 from setuptools import setup
+# Install with:
+#	pip install setuptools
+#	python setup.py install
+# To generate executables (post install): 
+#	pip install pyinstaller
+#	pyinstaller PosterDownloader.py -F
 
 setup(  name = 'Poster Downloader',
         version = '1.0',
@@ -10,5 +16,5 @@ setup(  name = 'Poster Downloader',
         author = 'F del Mazo',
 		author_email = 'federicodelmazo@hotmail.com',
 		url = 'https://github.com/FdelMazo/PosterDownloader/',
-		install_requires = ['bs4', 'lxml', 'requests'],
+		install_requires = ['lxml', 'bs4', 'requests'],
 )
