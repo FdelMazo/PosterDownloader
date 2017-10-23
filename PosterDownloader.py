@@ -87,12 +87,12 @@ def move_files(files, movie_name, dry_run):
 def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-f', '--file',help='Bath download from a txt file')
-	parser.add_argument('-y', '--no-confirm', help='No input required from you', action='append_const', const=("no_confirm",True), dest='flags')
-	parser.add_argument('--dry-run', help='Only show what would be done', action='append_const', const=("dry_run",True), dest='flags')
+	parser.add_argument('-y', '--no-confirm', help='No confirmation required from you', action='append_const', const=("no_confirm",True), dest='flags')
+	parser.add_argument('--dry-run', help='Only show what would be done without modifying files', action='append_const', const=("dry_run",True), dest='flags')
 
 	group = parser.add_mutually_exclusive_group()
-	group.add_argument('-v', '--verbose', help='Verbose logging', action='store_const', const=logging.DEBUG, dest='loglevel')
-	group.add_argument('-q', '--quiet', help='Only log warnings', action='store_const', const=logging.WARN, dest='loglevel')
+	group.add_argument('-v', '--verbose', help='Verbose/Debug logging', action='store_const', const=logging.DEBUG, dest='loglevel')
+	group.add_argument('-q', '--quiet', help='Only log file modifications', action='store_const', const=logging.WARN, dest='loglevel')
 
 	args = parser.parse_args()
 	flags = dict(args.flags) if args.flags else {}

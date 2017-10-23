@@ -1,19 +1,28 @@
 # PosterDownloader
-Webscraper for downloading official movie posters in the highest resolution available, using impawards.com as database
+Py3 Webscraper for downloading official movie posters in the highest resolution available, using impawards.com as database
 
 ## Installation & Quick Usage
 
-* End User:
-    * Download the executable from ['releases'](https://github.com/FdelMazo/PosterDownloader/releases) the latest one and extract everything
-    * After that, just start the PosterDownloader.exe (Windows) or write ./PosterDownloader in the terminal (Linux)
-
-## Complete Features
-
-## Developing
-
-If you want to tweak and see the source code (written in Python 3.6):
-* Just download from the repo page both "PosterDownloader.py" and "impawards.py" and start with 'python PosterDownloader.py'
-* Keep in mind you need pip (default in Py3.4 onwards) and: requests, bs4 and lxml
-
-Keep in mind, I don't encourage downloading several times in a short time span, as impawards tend to get angry when you request them so many images at once. 
-Try to space out your downloads
+### Executable:
+    * Download the latest executable from ['releases'](https://github.com/FdelMazo/PosterDownloader/releases)
+    * After that, just start the PosterDownloader.exe (Windows) or write `./PosterDownloader` in the terminal (Linux)
+	
+		* Executables are generated with [PyInstaller](http://www.pyinstaller.org/) by just writing `pyinstaller posterdownloader.py`
+	
+### Python script:
+	* Clone repo
+	* `python setup.py install`
+	* `python PosterDownloader.py`
+	
+### Python module:
+	[setup.py sdist -> import Posterdownloader -> download("Dark Knight 2008")]
+	
+## Complete options (Only when run on terminal):
+	`python PosterDownloader.py -flags` with the -flags being:
+	
+	* -h, --help            show this help message and exit
+	* -f FILE, --file FILE  Bath download from a txt file
+	* -y, --no-confirm      No confirmation required from you
+	* --dry-run             Only show what would be done, without modifying files
+	* -v, --verbose         Verbose/Debug logging
+	* -q, --quiet           Only log file modifications
