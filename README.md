@@ -1,10 +1,15 @@
 # PosterDownloader
 Webscraper for downloading official movie posters in the highest resolution available, using impawards.com as database
 
+## Installation & Quick Usage
 
-Windows and Linux users:
-* Download from 'releases' the latest one and extract everything
-* After that, just start the PosterDownloader.exe (Windows) or write ./PosterDownloader in the terminal (Linux)
+* End User:
+    * Download from ['releases'](https://github.com/FdelMazo/PosterDownloader/releases) the latest one and extract everything
+    * After that, just start the PosterDownloader.exe (Windows) or write ./PosterDownloader in the terminal (Linux)
+
+## Complete Features
+
+## Developing
 
 If you want to tweak and see the source code (written in Python 3.6):
 * Just download from the repo page both "PosterDownloader.py" and "impawards.py" and start with 'python PosterDownloader.py'
