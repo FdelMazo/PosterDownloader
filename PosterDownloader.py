@@ -9,41 +9,58 @@ import shutil
 import os
 
 def poster_downloader(search_terms=None, search_year=None, flags={}):
-	if not search_terms:
+	if search_terms or search_year:
+		if search_year.isdigit():
+			logging.debug("Searching for " + ' '.join(search_terms).title() + " {}".format(search_year))
+		else:
+			logging.warning("You must specify the year at the end")
+			return False, False
+	else:
 		search = input("\n Write a movie with the year at the end (ex: The Dark Knight 2008): ")
 		search = search.lower().strip().split(' ')
 		search_terms, search_year = search[:-1],search[-1]
-	if not search_year.isdigit():
-		print("You must specify the year at the end")
-		return poster_downloader()
-	logging.debug("Searching for " + ' '.join(search_terms).title() + "({})".format(search_year))
+		return poster_downloader(search_terms, search_year, flags)
 	crawler = Crawler()
 	possible_links = crawler.crawl(search_year, search_terms)
 	if len(possible_links) == 0:
-		print("No movies found")
-		return poster_downloader()
+		logging.warning("No movies found")
+		return False, False
 	elif len(possible_links) == 1:
 		title, movie_link = possible_links[-1]
 	else:
 		for i, tuple in enumerate(possible_links, 1):
 			print("{:<3} -  {}".format(i, tuple[0]))
-		selection = input("\n Which Movie? [write number] ").lower()
 		logging.debug("Press return to stop ")
+		selection = input("\n Which Movie? [write number] ").lower()
 		while not selection.isdigit() or not 0 < int(selection) <= len(possible_links) and selection != "":
-			if selection == "": return poster_downloader()
+			if not selection:
+				logging.warning("User canceled action")
+				del possible_links[:]
+				return False, False
 			selection = input("Just write the number: ").lower()
 		title,movie_link = possible_links[int(selection) - 1]
-	logging.info("Found: {}".format(title))
+	print("Found: {} at {}".format(title, movie_link))
+	if not flags.get('no_confirm'):
+		response = True if input("Do you want to download the posters for this movie?([Y]es/[N]o): ").lower() in 'yes' else False
+		if not response:
+			logging.warning("User canceled action")
+			del possible_links[:]
+			return False, False
 	images = crawler.get_images(search_year,movie_link)
-	if not images: return False, False
+	if not images:
+		del possible_links[:]
+		return False, False
 	best_images = []
 	for img in images:
 		best_images.append(crawler.get_highest_resolution(search_year,img))
 	files = []
-	if not best_images: return False, False
+	if not best_images:
+		del possible_links[:]
+		return False, False
 	for img in best_images:
 		filename = crawler.download_img(search_year,img, flags.get('dry_run'))
 		files.append(filename)
+	del possible_links[:]
 	return files, title.replace(':', ' ')
 
 def move_files(files, movie_name, dry_run):
@@ -80,7 +97,6 @@ def main():
 	args = parser.parse_args()
 	flags = dict(args.flags) if args.flags else {}
 	logging.basicConfig(level=args.loglevel or logging.INFO)
-
 	if args.file:
 		txt = open(args.file)
 		for i, movie in enumerate(txt):
@@ -88,15 +104,16 @@ def main():
 			search = movie.lower().strip().split(' ')
 			search_terms, search_year = search[:-1], search[-1]
 			try:
-				poster_downloader(search_terms,search_year,flags)
+				files, movie_name = poster_downloader(search_terms,search_year,flags)
+				if files and movie_name: move_files(files, movie_name, flags.get('dry_run'))
 			except KeyboardInterrupt as e:
 				logging.error(e)
-				pass
+				continue
 		txt.close()
 	else:
 		try:
 			files, movie_name = poster_downloader(flags=flags)
-			move_files(files, movie_name, flags.get('dry_run'))
+			if files and movie_name: move_files(files, movie_name, flags.get('dry_run'))
 		except KeyboardInterrupt as e:
 			logging.error(e)
 			pass
