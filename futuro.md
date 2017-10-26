@@ -1,3 +1,6 @@
+Forma de generar ejecutable (cambiar numero de version, y depende del os la extension):
+`pyinstaller posterdownloader.py -F -n PosterDownloader1.1.exe --specpath Build --distpath Releases --workpath Build`
+
 - [ ] Install as python module
 
 - [X] Dev Branch
