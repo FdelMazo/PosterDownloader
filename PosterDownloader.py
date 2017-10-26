@@ -9,7 +9,6 @@ import logging
 import shutil
 import os
 
-
 def poster_downloader(search=None, flags={}):
 	if search:
 		search = search.lower().strip().split(' ')

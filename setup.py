@@ -7,8 +7,10 @@ from setuptools import setup
 #	pip install setuptools
 #	python setup.py install
 # To generate executables (post install): 
-#	pip install pyinstaller
-#	pyinstaller PosterDownloader.py -F
+#   pip install pyinstaller
+#   Cambiar segun version y OS
+#     pyinstaller posterdownloader.py -F -n PosterDownloader1.1.exe --specpath Build --distpath Releases --workpath Build
+
 
 setup(  name = 'Poster Downloader',
         version = '1.0',
