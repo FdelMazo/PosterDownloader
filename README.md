@@ -12,21 +12,18 @@ Py3 Webscraper for downloading official movie posters in the highest resolution 
 * Clone repo `git clone`
 * Install the dependencies `python setup.py install`
 * Execute `python PosterDownloader.py`
-    
-### Python module:
-    [setup.py sdist -> import Posterdownloader -> download("Dark Knight 2008")]
-    
+        
 ## Complete options (Only when run on terminal):
 
 `python PosterDownloader.py ["The Dark Knight 2008"] -flags` with ["Movie year"] being optional and the -flags being:
 
-* -h, --help            Show this help message and exit
-* -f FILE, --file FILE  Bath download from a txt file
-* -y, --no-confirm      No confirmation required from you
-* --dry-run             Only show what would be done, without modifying files
-* -l, --log             Log everything to PosterDownlaoder.log
-* -v, --verbose         Verbose/Debug logging
-* -q, --quiet           Only log file modifications
+* `-h, --help`            Show this help message and exit
+* `-f FILE, --file FILE`  Bath download from a txt file
+* `-y, --no-confirm`      No confirmation required from you
+* `--dry-run`             Only show what would be done, without modifying files
+* `-l, --log`             Log everything to PosterDownlaoder.log
+* `-v, --verbose`         Verbose/Debug logging
+* `-q, --quiet`           Only log file modifications
 
 ### I have a problem! How can I contact you?
 

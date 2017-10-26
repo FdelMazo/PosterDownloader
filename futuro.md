@@ -2,6 +2,9 @@ Forma de generar ejecutable (cambiar numero de version, y depende del os la exte
 `pyinstaller posterdownloader.py -F -n PosterDownloader1.1.exe --specpath Build --distpath Releases --workpath Build`
 
 - [ ] Install as python module
+Agregar a readme:
+Python module:
+    [setup.py sdist -> import Posterdownloader -> download("Dark Knight 2008")]
 
 - [X] Dev Branch
 - [ ] Buen project tagline
