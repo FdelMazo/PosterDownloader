@@ -4,12 +4,15 @@
 
 from setuptools import setup
 # Install with:
-#	pip install setuptools
-#	python setup.py install
+# 	apt-get install python3-pip
+#	pip3 install setuptools
+#   if required: apt-get install python3-lxml
+#	python3 setup.py install
 # To generate executables (post install): 
-#   pip install pyinstaller
+#   pip3 install pyinstaller
 #   Cambiar segun version y OS
-#     pyinstaller posterdownloader.py -F -n PosterDownloader1.1.exe --specpath Build --distpath Releases --workpath Build
+#     pyinstaller PosterDownloader.py -F -n PosterDownloader1.1.exe --specpath Build --distpath Releases --workpath Build
+#	if required: https://stackoverflow.com/questions/38746462/how-to-correctly-install-pyinstaller
 
 
 setup(  name = 'Poster Downloader',

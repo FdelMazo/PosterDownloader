@@ -21,6 +21,7 @@ General
 	## Complete Features and options
 	## Contributing
 	## I have a problem! How can I contact you?
+- [ ] Habilitar para todo tipo de ejecuciones las complete features and options
 - [X] Arg Parser: Correr sin nada tira todas las _funciones_ y avisa que con -h se saben todas las _opciones_
 - [X] Arg Parser: directory, file, input - output, quiet - verbose - debugging,  dry run, no keyboard input  no confirm mode
 - [X] Diccionario de flags y que todo reciba eso y diccionario de parametros
