@@ -23,7 +23,7 @@ Py3 Webscraper for downloading official movie posters in the highest resolution 
     * -f FILE, --file FILE  Bath download from a txt file
     * -y, --no-confirm      No confirmation required from you
     * --dry-run             Only show what would be done, without modifying files
-	* -l, --log             Log everything to PosterDownlaoder.log
+    * -l, --log             Log everything to PosterDownlaoder.log
     * -v, --verbose         Verbose/Debug logging
     * -q, --quiet           Only log file modifications
 
