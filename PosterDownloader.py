@@ -104,12 +104,14 @@ def main():
     
 	args = parser.parse_args()
 	flags = dict(args.flags) if args.flags else {}
+	superformat = '%(levelname)s: %(message)s - %(funcName)s at %(filename)s.%(lineno)d'
 	if args.log:
 		console = logging.StreamHandler()
-		console.setLevel(logging.INFO)
-		logging.basicConfig(level=logging.DEBUG, filename='PythonDownloader.log')
+		console.setLevel(args.loglevel or logging.INFO)
+		console.setFormatter(logging.Formatter(superformat))
+		logging.basicConfig(level=logging.DEBUG, format=superformat, filename='PythonDownloader.log')
 		logging.getLogger('').addHandler(console)
-	elif args.loglevel:	logging.basicConfig(level=args.loglevel, format='%(levelname)s: %(message)s - %(funcName)s at %(filename)s.%(lineno)d')
+	elif args.loglevel:	logging.basicConfig(level=args.loglevel, format=superformat)
 	else:  logging.basicConfig(level=logging.INFO, format='%(message)s')
 	
 	logging.warning("Starting...")
