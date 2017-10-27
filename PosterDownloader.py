@@ -109,7 +109,7 @@ def main():
 		console = logging.StreamHandler()
 		console.setLevel(args.loglevel or logging.INFO)
 		console.setFormatter(logging.Formatter(superformat))
-		logging.basicConfig(level=logging.DEBUG, format=superformat, filename='PythonDownloader.log')
+		logging.basicConfig(level=logging.DEBUG, format=superformat, filename='PosterDownloader.log')
 		logging.getLogger('').addHandler(console)
 	elif args.loglevel:	logging.basicConfig(level=args.loglevel, format=superformat)
 	else:  logging.basicConfig(level=logging.INFO, format='%(message)s')

@@ -12,7 +12,7 @@ from setuptools import setup
 #   pip3 install pyinstaller
 #   Cambiar segun version y OS
 #     pyinstaller PosterDownloader.py -F -n PosterDownloader1.1.exe --specpath Build --distpath Releases --workpath Build
-#	if required: https://stackoverflow.com/questions/38746462/how-to-correctly-install-pyinstaller
+#	if required: /home/username/.local/bin/pyinstaller aka https://stackoverflow.com/questions/38746462/how-to-correctly-install-pyinstaller 
 
 
 setup(  name = 'Poster Downloader',
