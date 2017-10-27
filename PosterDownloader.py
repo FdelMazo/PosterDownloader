@@ -3,7 +3,6 @@
 #federicodelmazo@hotmail.com
 
 from impawards import Crawler
-import sys
 import argparse
 import logging
 import shutil
@@ -57,11 +56,11 @@ def poster_downloader(search=None, flags={}):
 	logging.debug("Processing {} images".format(len(images)))
 	best_images = []
 	for img in images:
-		best_images.append(crawler.get_highest_resolution(search_year,img))
+		best_images.extend(crawler.get_highest_resolution(search_year,img, flags.get('all')))
 	if not best_images:
 		del possible_links[:]
 		return False, False
-	logging.debug("Changed to {} HQ images".format(len(best_images)))
+	logging.debug("Changed to a total of {} images".format(len(best_images)))
 	files = []
 	for img in best_images:
 		filename = crawler.download_img(search_year,img, flags.get('dry_run'))
@@ -95,8 +94,9 @@ def main():
 	parser.add_argument('command_line_movie',help='Movies can be called from the CLA', nargs='?', action = 'store', default = None)
 	parser.add_argument('-f', '--file',help='Bath download from a txt file')
 	parser.add_argument('-y', '--no-confirm', help='No confirmation required from you', action='append_const', const=("no_confirm",True), dest='flags')
+	parser.add_argument('-a', '--all', help='Download every poster, instead of only the highest resolution available', action='append_const', const=("all",True), dest='flags')
 	parser.add_argument('--dry-run', help='Only show what would be done without modifying files', action='append_const', const=("dry_run",True), dest='flags')
-	parser.add_argument('-l', '--log', help='Log everything to PosterDownlaoder.log', action='store_true')
+	parser.add_argument('-l', '--log', help='Log everything to PosterDownloader.log', action='store_true')
 
 	group = parser.add_mutually_exclusive_group()
 	group.add_argument('-v', '--verbose', help='Verbose/Debug logging', action='store_const', const=logging.DEBUG, dest='loglevel')
@@ -109,7 +109,7 @@ def main():
 		console.setLevel(logging.INFO)
 		logging.basicConfig(level=logging.DEBUG, filename='PythonDownloader.log')
 		logging.getLogger('').addHandler(console)
-	elif args.loglevel:	logging.basicConfig(level=args.loglevel, format='%(levelname)s: %(message)s')
+	elif args.loglevel:	logging.basicConfig(level=args.loglevel, format='%(levelname)s: %(message)s - %(funcName)s at %(filename)s.%(lineno)d')
 	else:  logging.basicConfig(level=logging.INFO, format='%(message)s')
 	
 	logging.warning("Starting...")

@@ -4,11 +4,10 @@ General
 - [X] Futuro.md Readme.md Contributing.md
 - [X] Gitignore
 - [X] Carpeta Releases
-- [ ] Releases: Windows Linux Mac
+- [X] Releases: Windows Linux
 - [X] Makefile/setup.py de build y de use. 
-- [ ] Modos de uso e instalacion: 
+- [X] Modos de uso e instalacion:
 	1. Un binario doble click linux y windows (carpeta releases/binaries) 
-	1. Setup.py que instala el modulo. Solo hay que hacer import videomanager y se usa. 
 	1. Terminal: python3 moviemanager.... etc
 - [ ] Gifs de como usar 
 - [X] Documentacion: Readme.md
@@ -20,18 +19,11 @@ General
 	### Gifs de todas las formas de usarlo, en todas las plataformas disponibles
 	## Complete Features and options
 	## Contributing
+	## Resources
 	## I have a problem! How can I contact you?
 - [ ] Habilitar para todo tipo de ejecuciones las complete features and options
 - [X] Arg Parser: Correr sin nada tira todas las _funciones_ y avisa que con -h se saben todas las _opciones_
 - [X] Arg Parser: directory, file, input - output, quiet - verbose - debugging,  dry run, no keyboard input  no confirm mode
 - [X] Diccionario de flags y que todo reciba eso y diccionario de parametros
 - [X] Buen manejo de requirements
-- [ ] Buen project tagline
-
-Especifico
-
-- [ ] Install as python module
-	Agregar a readme:
-	###Python module:
-		[setup.py sdist -> import Posterdownloader -> download("Dark Knight 2008")]
-
+- [X] Buen project tagline
