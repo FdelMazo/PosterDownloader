@@ -1,6 +1,9 @@
-Posters
-Releases
 .idea
 __pycache__
-PosterDownloader.log
 Build
+Posters
+Releases
+PosterDownloader.log
+Poster_Downloader.egg-info
+dist
+build

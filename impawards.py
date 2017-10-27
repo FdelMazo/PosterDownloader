@@ -45,20 +45,22 @@ class Crawler:
 				logging.debug("Added {}".format(link.get('href')))
 		return images
 
-	def get_highest_resolution(self, search_year, img_link):
+	def get_highest_resolution(self, search_year, img_link, all):
 		url_base=self.site+"{}/".format(search_year)
 		soup = request_soup(url_base+img_link)
 		if not soup: return False
-		best_link = img_link
-		if not soup.findAll('a',href=True): return best_link
+		hq_links = [img_link]
+		if not soup.findAll('a',href=True): return hq_links
 		for link in soup.findAll('a',href=True):
-			if "xxlg" in link.get('href').lower():
-				best_link= link.get('href')
-			elif "xlg" in link.get('href').lower() and "xxlg" not in best_link:
-				best_link=link.get('href')
-		if best_link != img_link: logging.debug("Changed from {} to {}".format(img_link,best_link))
-		return best_link
-		
+			if "xlg" in link.get('href').lower() and link.get('href') not in hq_links:
+				hq_links.append(link.get('href'))
+		if all:
+			logging.debug("Total images: {}".format(hq_links))
+			return hq_links
+		else:
+			logging.debug("Changed from {} to {}".format(img_link, hq_links[-1]))
+			return list(hq_links[-1])
+
 	def download_img(self, search_year, img_link, dry_run):
 		url_base=self.site+"{}/posters/".format(search_year)
 		filename = img_link[:-4]+"jpg"
