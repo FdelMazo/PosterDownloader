@@ -16,7 +16,7 @@ from setuptools import setup
 
 
 setup(  name = 'Poster Downloader',
-        version = '1.0',
+        version = '1.1',
         description = 'Webscraper for downloading movie posters in the highest resolution available',
         author = 'F del Mazo',
 		author_email = 'federicodelmazo@hotmail.com',
