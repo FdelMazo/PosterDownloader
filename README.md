@@ -4,7 +4,7 @@ Py3 Webscraper for downloading official movie posters in the highest resolution 
 ## Installation & Quick Usage
 
 ### Executable:
-* Download the latest executable from ['releases'](https://github.com/FdelMazo/PosterDownloader/releases)
+* Download the latest executable from ['releases'](https://github.com/FdelMazo/PosterDownloader/releases/latest)
 * After that, just start the PosterDownloader.exe (Windows) or write `./PosterDownloader` in the terminal (Linux)
     * Executables are generated with [PyInstaller](http://www.pyinstaller.org/) by just writing `pyinstaller posterdownloader.py -F`
 
