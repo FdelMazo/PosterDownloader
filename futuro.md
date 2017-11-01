@@ -1,3 +1,0 @@
-- [ ] Criterion and Mondo support
-- [ ] Ability to add fanart?
-- [ ] Usage gifs
