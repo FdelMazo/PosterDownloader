@@ -1,34 +1,22 @@
 - [ ] Criterion and Mondo support
 - [ ] Ability to add fanart?
 - [ ] Ability to add concept art?
-
-Project Roadmap
-- [X] dev Branch con roadmap MD -> copiar e ir tildando
-- [X] Settings borrar lo que no aplica (wiki, issues, projects)
-- [ ] Todo codeado en mismo idioma
-- [X] roadmap.md readme.md
-- [X] Gitignore
-- [X] Carpeta Releases
-- [X] Releases: Windows Linux
-- [X] Makefile/setup.py de build y de use. 
-- [X] Modos de uso e instalacion: 
-	1. Un binario doble click linux y windows (carpeta releases/binaries) 
-	1. Terminal: python3 programa -flags... etc
+- [ ] Multithreading mientras espera al keyboard user input
 - [ ] Gifs de como usar 
-- [X] Documentacion: Readme.md
-	## Installation & Quick Usage
-	### Executable (Windows / Linux / Mac) 
-	### Python script	
-	## Complete options
-	## I have a problem! How can I contact you?
-- [ ] README con badges chetas
 - [ ] Habilitar para todo tipo de ejecuciones las complete features and options
-- [X] Arg Parser:
-	* command_line_arg
-	* --file, --quiet, --verbose, --log, --dry-run, --no-confirm, --all
-- [X] Diccionario de flags y que todo reciba eso y diccionario de parametros
-- [X] Buen manejo de requirements
-- [X] Logging
 - [ ] Buen project tagline
-- [ ] Jetbrains refactor y code review
+- [ ] SOLID -> Una responsabilidad, no depender de cosas concretas (como bases de datos especificas)
+- [ ] Documentar y respetar contrato -> Firma, precondiciones, postcondiciones, invariantes
+- [ ] Si no se cumplen las precondiciones al principio, lanzar excepcion
+- [ ] Evitar muchos ifs -> polimorfismo
+- [ ] Calcular todo lo posible preciclo
+- [ ] Nombres de funciones son soluciones, no problemas
+- [ ] Nombres de booleanos evaluando a true
+- [ ] Metodos que NO usa el usuario -> _privados
+- [ ] Las clases no funcionan como contenedores de datos, tienen que tener comportamiento independiente
+- [ ] Capturar errores no genericos, todo tiene que estar controlado
+- [ ] Muchos metodos similares, datos sueltos, codigo repetido -> hacer una clase nueva
+- [ ] Minimo acoplamiento (interdependencia) posible
+- [ ] Sin prints sueltos -> Todo print es seguido de algun return True/False o valor y/o es un logging
+- [ ] Jetbrains inspect code
 - [ ] https://refactoring.guru/refactoring y https://refactoring.guru/refactoring
