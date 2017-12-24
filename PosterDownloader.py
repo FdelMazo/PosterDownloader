@@ -1,7 +1,3 @@
-#F del Mazo - initial commit July 2017
-#https://github.com/FdelMazo/
-#federicodelmazo@hotmail.com
-
 from impawards import Crawler
 import argparse
 import logging

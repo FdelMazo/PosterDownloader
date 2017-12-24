@@ -1,7 +1,3 @@
-#F del Mazo - initial commit July 2017
-#https://github.com/FdelMazo/
-#federicodelmazo@hotmail.com
-
 import requests
 import logging
 from bs4 import BeautifulSoup
