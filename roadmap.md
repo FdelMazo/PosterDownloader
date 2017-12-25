@@ -1,5 +1,0 @@
-- [ ] Criterion and Mondo support
-- [ ] Ability to add fanart?
-- [ ] Ability to add concept art?
-- [ ] Multithreading mientras espera al keyboard user input
-- [ ] Gifs de como usar 

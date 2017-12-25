@@ -30,3 +30,7 @@ Py3 Webscraper for downloading official movie posters in the highest resolution 
 
 The easiest would be for you to describe your problem to me in the [issues](https://github.com/FdelMazo/posterdownloader/issues) section. To make it even easier you could replicate your error (search the same movies, pass the same txt file, etc etc) but this time logging it:
 `Python posterdownloader.py --log`
+
+Also see:
+
+* Comicbook Covers Downloader: https://github.com/FdelMazo/ComicbookCoversDownloader
