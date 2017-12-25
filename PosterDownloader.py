@@ -1,12 +1,28 @@
-#F del Mazo - initial commit July 2017
-#https://github.com/FdelMazo/
-#federicodelmazo@hotmail.com
-
 from impawards import Crawler
 import argparse
 import logging
 import shutil
 import os
+
+def select_link(possible_links, flags):
+	if len(possible_links) == 0:
+		logging.warning("No movies found")
+		return False, False
+	elif len(possible_links) == 1 or flags.get('no_confirm'):
+		title, movie_link = possible_links[0]
+	else:
+		for i, tuple in enumerate(possible_links, 1):
+			print("\t {:<3} -  {}".format(i, tuple[0]))
+		logging.debug("Press return to stop ")
+		selection = input("\n Which Movie? [Number] ").lower()
+		while not selection.isdigit() or not 0 < int(selection) <= len(possible_links) and selection != "":
+			if not selection:
+				logging.warning("User canceled action")
+				del possible_links[:]
+				return False, False
+			selection = input("Just write the number: ").lower()
+		title,movie_link = possible_links[int(selection) - 1]
+	return title, movie_link
 
 def poster_downloader(search=None, flags={}):
 	if search:
@@ -22,32 +38,11 @@ def poster_downloader(search=None, flags={}):
 		return poster_downloader(search, flags)
 	crawler = Crawler()
 	possible_links = crawler.crawl(search_year, search_terms)
-	if len(possible_links) == 0:
-		logging.warning("No movies found")
+	title, movie_link = select_link(possible_links, flags)
+	if not movie_link:
+		del possible_links[:]
 		return False, False
-	elif len(possible_links) == 1:
-		title, movie_link = possible_links[-1]
-	else:
-		for i, tuple in enumerate(possible_links, 1):
-			logging.info("\t {:<3} -  {}".format(i, tuple[0]))
-		logging.debug("Press return to stop ")
-		selection = input("\n Which Movie? [Number] ").lower()
-		while not selection.isdigit() or not 0 < int(selection) <= len(possible_links) and selection != "":
-			if not selection:
-				logging.warning("User canceled action")
-				del possible_links[:]
-				return False, False
-			selection = input("Just write the number: ").lower()
-		title,movie_link = possible_links[int(selection) - 1]
 	logging.info("Found {} at {}".format(title, movie_link))
-	if not flags.get('no_confirm'):
-		response = True if input("Do you want to download the posters for this movie? ([Y]es/[N]o): ").lower() in 'yes' else False
-		if not response:
-			logging.warning("User canceled action")
-			del possible_links[:]
-			return False, False
-		else:
-			logging.debug("User confirmed action")
 	images = crawler.get_images(search_year,movie_link)
 	if not images:
 		logging.warning("No images found")
@@ -104,7 +99,7 @@ def main():
     
 	args = parser.parse_args()
 	flags = dict(args.flags) if args.flags else {}
-	superformat = '%(levelname)s: %(message)s - %(funcName)s at %(filename)s.%(lineno)d'
+	superformat = '%(levelname)s: %(message)s - %(funcName)s() at %(filename)s.%(lineno)d'
 	if args.log:
 		console = logging.StreamHandler()
 		console.setLevel(args.loglevel or logging.INFO)

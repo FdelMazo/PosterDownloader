@@ -9,13 +9,13 @@ Py3 Webscraper for downloading official movie posters in the highest resolution 
     * Executables are generated with [PyInstaller](http://www.pyinstaller.org/) by just writing `pyinstaller posterdownloader.py -F`
 
 ### Python script:
-* Clone repo `git clone`
+* Clone repo `git clone https://github.com/FdelMazo/PosterDownloader.git`
 * Install the dependencies `python setup.py install`
 * Execute `python PosterDownloader.py`
         
 ## Complete options (Only when run on terminal):
 
-`python PosterDownloader.py ["The Dark Knight 2008"] -flags` with ["Movie year"] being optional and the -flags being:
+`python PosterDownloader.py ["The Dark Knight 2008"] -flags` with the movie between brackets being optional and the -flags being:
 
 * `-h, --help`            Show this help message and exit
 * `-f FILE, --file FILE`  Bath download from a txt file
@@ -30,3 +30,4 @@ Py3 Webscraper for downloading official movie posters in the highest resolution 
 
 The easiest would be for you to describe your problem to me in the [issues](https://github.com/FdelMazo/posterdownloader/issues) section. To make it even easier you could replicate your error (search the same movies, pass the same txt file, etc etc) but this time logging it:
 `Python posterdownloader.py --log`
+* Comicbook Covers Downloader: https://github.com/FdelMazo/ComicbookCoversDownloader
