@@ -58,7 +58,7 @@ def poster_downloader(search=None, flags={}):
 	logging.debug("Changed to a total of {} images".format(len(best_images)))
 	files = []
 	for img in best_images:
-		filename = crawler.download_img(search_year,img, flags.get('dry_run'))
+		filename = crawler.download_img(search_year, img, flags.get('dry_run'))
 		if filename: files.append(filename)
 	del possible_links[:]
 	return files, title.replace(':', ' ')
@@ -108,8 +108,7 @@ def main():
 		logging.getLogger('').addHandler(console)
 	elif args.loglevel:	logging.basicConfig(level=args.loglevel, format=superformat)
 	else:  logging.basicConfig(level=logging.INFO, format='%(message)s')
-	
-	logging.warning("Starting...")
+	logging.getLogger("requests").setLevel(logging.WARNING)
 	
 	if args.file:
 		txt = open(args.file)
