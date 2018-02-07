@@ -46,7 +46,6 @@ class Crawler:
 		soup = request_soup(url_base+img_link)
 		if not soup: return False
 		hq_links = [img_link]
-		print(img_link,hq_links)
 		if not soup.findAll('a',href=True): return hq_links
 		for link in soup.findAll('a',href=True):
 			if "xlg" in link.get('href').lower() and link.get('href') not in hq_links:
@@ -61,7 +60,6 @@ class Crawler:
 	def download_img(self, search_year, img_link, dry_run):
 		url_base=self.site+"{}/posters/".format(search_year)
 		filename = img_link[:-4]+"jpg"
-		print(img_link, filename)
 		r = requests.get(url_base+filename)
 		if r.status_code == 404:
 			logging.error("Error 404 at {}".format(url_base+filename))
