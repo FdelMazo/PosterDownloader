@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from impawards import Crawler
 import argparse
 import logging
